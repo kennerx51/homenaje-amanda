@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda Aguilar y las Mujeres del Cuá</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        skybrand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#06b6d4',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        gold: {
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .sky-gradient {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #e0f2fe 100%);
+        }
+        .header-gradient {
+            background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #075985 100%);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header & Navegación -->
+    <header class="header-gradient text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-dove text-2xl text-amber-300"></i>
+                <h1 class="text-xl md:text-2xl font-bold tracking-wide">Amanda Aguilar & Las Mujeres del Cuá</h1>
+            </div>
+            <nav class="flex flex-wrap gap-2 sm:gap-4 text-sm font-medium">
+                <a href="#biografia" class="px-3 py-1.5 rounded-lg hover:bg-white/20 transition">Biografía</a>
+                <a href="#cancion" class="px-3 py-1.5 rounded-lg hover:bg-white/20 transition">Canción Histórica</a>
+                <a href="#cronologia" class="px-3 py-1.5 rounded-lg hover:bg-white/20 transition">Cronología</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero / Resumen con Narrador de Voz -->
+    <section class="sky-gradient py-12 px-4 border-b border-skybrand-200">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="inline-block px-3 py-1 bg-skybrand-200 text-skybrand-900 rounded-full text-xs font-semibold tracking-wider uppercase mb-3">Heroína Nacional de Nicaragua</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-skybrand-900 mb-4 leading-tight">
+                Petrona Hernández López ("Amanda Aguilar")
+            </h2>
+            <p class="text-slate-700 text-base md:text-lg max-w-2xl mx-auto mb-6 leading-relaxed">
+                Símbolo inquebrantable de la valentía, la dignidad campesina y la resistencia en las montañas del norte de Nicaragua.
+            </p>
+            
+            <!-- Sintetizador de Voz (Text-to-Speech) -->
+            <div class="bg-white/80 backdrop-blur p-4 rounded-2xl shadow-sm border border-skybrand-200 inline-flex flex-col sm:flex-row items-center gap-4 max-w-xl mx-auto">
+                <button id="ttsButton" onclick="toggleSpeech()" class="w-full sm:w-auto px-6 py-3 bg-skybrand-600 hover:bg-skybrand-700 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-3">
+                    <i id="ttsIcon" class="fa-solid fa-volume-high text-lg"></i>
+                    <span id="ttsText">Escuchar Reseña de Amanda Aguilar</span>
+                </button>
+                <p class="text-xs text-slate-500 text-center sm:text-left">
+                    Usa la síntesis de voz integrada para escuchar la narración histórica.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-10 space-y-12 flex-grow">
+
+        <!-- Sección Biografía -->
+        <section id="biografia" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-skybrand-100">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-skybrand-100 text-skybrand-700 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-skybrand-900">Biografía e Historia</h3>
+            </div>
+            
+            <div id="narrativa-texto" class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
+                <p>
+                    <strong>Petrona Hernández López</strong>, conocida cariñosamente en la historia nicaragüense como <strong>"Amanda Aguilar"</strong> (1890 - 2007), fue una campesina y heroína patriota originaria de las montañas del norte de Nicaragua. Su vida estuvo estrechamente vinculada a la lucha por la justicia social y los derechos de la población rural.
+                </p>
+                <p>
+                    Durante la década de 1970, en el municipio de El Cuá (departamento de Jinotega), fue víctima junto a otras mujeres campesinas de la persecución y encarcelamiento por parte de la Guardia Nacional somocista. A pesar de la tortura y el sufrimiento, demostró un carácter inquebrantable, negándose a traicionar a sus compañeros y protegiendo a su comunidad.
+                </p>
+                <p>
+                    Su resistencia y la de sus compañeras inspiraron a poetas y músicos, convirtiendo su testimonio en un emblema de la fuerza y dignidad de la mujer campesina nicaragüense. Vivió más de un siglo, convirtiéndose en un referente de memoria histórica y patriotismo.
+                </p>
+            </div>
+        </section>
+
+        <!-- Reproductor de la Canción Histórica -->
+        <section id="cancion" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-skybrand-100">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-music"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-skybrand-900">Canción "Las Mujeres del Cuá"</h3>
+                    <p class="text-sm text-slate-500">Composición: Carlos Mejía Godoy & Ernesto Cardenal</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7">
+                    <div class="relative w-full overflow-hidden rounded-2xl shadow-lg border border-slate-200" style="padding-top: 56.25%;">
+                        <iframe 
+                            class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube-nocookie.com/embed/FFGqyG-qi6Y" 
+                            title="Canción Las Mujeres del Cuá - Carlos Mejía Godoy"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="p-5 bg-skybrand-50 rounded-xl border border-skybrand-200">
+                        <h4 class="font-bold text-skybrand-900 mb-2">Fragmento del Canto:</h4>
+                        <blockquote class="italic text-slate-700 text-sm border-l-4 border-skybrand-500 pl-3 py-1">
+                            "Voy a hablarles de las mujeres de El Cuá<br>
+                            que sufrieron la tortura y el dolor,<br>
+                            Amanda Aguilar de noventa años,<br>
+                            no dijo nada, no habló nada..."
+                        </blockquote>
+                    </div>
+                    <p class="text-xs text-slate-500">
+                        La obra de Carlos Mejía Godoy inmortalizó para siempre la fortaleza de Amanda Aguilar y el campesinado nicaragüense.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cronología Histórica -->
+        <section id="cronologia" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-skybrand-100">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 rounded-xl bg-skybrand-700 text-white flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-timeline"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-skybrand-900">Cronología Histórica (1890 - 2007)</h3>
+            </div>
+
+            <div class="relative border-l-2 border-skybrand-200 ml-4 md:ml-8 space-y-8">
+                <!-- Hito 1 -->
+                <div class="relative pl-6 md:pl-8">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-skybrand-600 border-4 border-white shadow"></div>
+                    <span class="inline-block px-2.5 py-0.5 bg-skybrand-100 text-skybrand-800 font-bold text-xs rounded-md mb-1">1890</span>
+                    <h4 class="text-lg font-semibold text-slate-800">Nacimiento de Petrona Hernández</h4>
+                    <p class="text-sm text-slate-600 mt-1">Nace en la zona rural del norte de Nicaragua, creciendo en un entorno campesino marcado por el trabajo de la tierra.</p>
+                </div>
+
+                <!-- Hito 2 -->
+                <div class="relative pl-6 md:pl-8">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-skybrand-600 border-4 border-white shadow"></div>
+                    <span class="inline-block px-2.5 py-0.5 bg-skybrand-100 text-skybrand-800 font-bold text-xs rounded-md mb-1">Década de 1970</span>
+                    <h4 class="text-lg font-semibold text-slate-800">Sucesos de El Cuá</h4>
+                    <p class="text-sm text-slate-600 mt-1">Sufre detención y persecución junto a un grupo de mujeres campesinas. Adopta el seudónimo de "Amanda Aguilar" y se niega rotundamente a revelar información a los represores.</p>
+                </div>
+
+                <!-- Hito 3 -->
+                <div class="relative pl-6 md:pl-8">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-skybrand-600 border-4 border-white shadow"></div>
+                    <span class="inline-block px-2.5 py-0.5 bg-skybrand-100 text-skybrand-800 font-bold text-xs rounded-md mb-1">1977</span>
+                    <h4 class="text-lg font-semibold text-slate-800">Consolidación en la Cultura Popular</h4>
+                    <p class="text-sm text-slate-600 mt-1">El testimonio del Cuá trasciende a través de la música y la poesía, elevando su nombre a símbolo de soberanía y valor.</p>
+                </div>
+
+                <!-- Hito 4 -->
+                <div class="relative pl-6 md:pl-8">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-500 border-4 border-white shadow"></div>
+                    <span class="inline-block px-2.5 py-0.5 bg-amber-100 text-amber-900 font-bold text-xs rounded-md mb-1">2007</span>
+                    <h4 class="text-lg font-semibold text-slate-800">Tránsito a la Inmortalidad</h4>
+                    <p class="text-sm text-slate-600 mt-1">Fallece a una edad longeva (más de 116 años según relatos tradicionales), dejando un legado imborrable de dignidad nacional.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-skybrand-900 text-skybrand-100 py-6 px-4 text-center text-sm border-t border-skybrand-800">
+        <div class="max-w-6xl mx-auto space-y-2">
+            <p class="font-semibold">Homenaje Histórico a Petrona Hernández López ("Amanda Aguilar")</p>
+            <p class="text-xs text-skybrand-300">Memoria y Dignidad del Pueblo Nicaragüense</p>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript para Text-to-Speech -->
+    <script>
+        let isSpeaking = false;
+        let synth = window.speechSynthesis;
+        let utterance = null;
+
+        function toggleSpeech() {
+            const btnText = document.getElementById('ttsText');
+            const btnIcon = document.getElementById('ttsIcon');
+
+            if (!('speechSynthesis' in window)) {
+                alert('Tu navegador no soporta la función de síntesis de voz.');
+                return;
+            }
+
+            if (isSpeaking) {
+                synth.cancel();
+                isSpeaking = false;
+                btnText.textContent = 'Escuchar Reseña de Amanda Aguilar';
+                btnIcon.className = 'fa-solid fa-volume-high text-lg';
+            } else {
+                const bioText = document.getElementById('narrativa-texto').innerText;
+                utterance = new SpeechSynthesisUtterance("Reseña histórica de Amanda Aguilar. " + bioText);
+                utterance.lang = 'es-ES';
+                utterance.rate = 0.95;
+
+                utterance.onend = function () {
+                    isSpeaking = false;
+                    btnText.textContent = 'Escuchar Reseña de Amanda Aguilar';
+                    btnIcon.className = 'fa-solid fa-volume-high text-lg';
+                };
+
+                utterance.onerror = function () {
+                    isSpeaking = false;
+                    btnText.textContent = 'Escuchar Reseña de Amanda Aguilar';
+                    btnIcon.className = 'fa-solid fa-volume-high text-lg';
+                };
+
+                synth.speak(utterance);
+                isSpeaking = true;
+                btnText.textContent = 'Detener Narración de Voz';
+                btnIcon.className = 'fa-solid fa-square-stop text-lg';
+            }
+        }
+    </script>
+</body>
+</html>
